@@ -57,6 +57,9 @@ Profiles　→ より　以下を選択し　.mobileprovisio ファイルをダ�
 ### ・　EXPORTOPTIONS_BASE64
 xcodeに　移動　→ 以下を設定
 
+![image](https://github.com/rensawamo/flutter-IOS-destribution/assets/106803080/de4b0efa-7426-46b5-afac-8b46be3a6dc5)
+
+
 
 → Product → Archeve で　Custom 　→ 　App Store Connect 　→　 Export 　→　 ExportOptions.plistをふくむフォルダをダウンロード　　→　　ExportOptions.plistをプロジェクトのルートディレクトに入れる　→  エンコード
 
