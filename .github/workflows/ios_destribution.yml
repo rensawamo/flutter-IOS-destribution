@@ -31,8 +31,8 @@ jobs:
       - name: Import Code-Signing Certificates
         uses: Apple-Actions/import-codesign-certs@v1
         with:
-          p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
-          p12-password: ${{ secrets.CERTIFICATE_PASSWORD_BASE64 }}
+          p12-file-base64: ${{ secrets.CERTIFICATES_P12_BASE64 }}
+          p12-password: ${{ secrets.CERTIFICATE_PASSWORD }}
 
       - name: Create ipa file
         run: flutter build ipa --export-options-plist=ExportOptions.plist --build-number ${GITHUB_RUN_NUMBER}
