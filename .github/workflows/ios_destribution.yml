@@ -1,0 +1,44 @@
+
+name: firebase_ios_destribution
+
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  build_iOS:
+    name: firebase_ios_destribution
+    runs-on: macos-latest
+    steps:
+      - name: Checks-out my repository
+        uses: actions/checkout@v2
+      - name: Install Flutter
+        run: git clone https://github.com/flutter/flutter.git
+
+      - name: Add path
+        run: echo "$(pwd)/flutter/bin" >> $GITHUB_PATH
+
+      - name: Download Flutter packages
+        run: flutter pub get
+
+      - name: Add ExportOptions.plist
+        run: echo "${{ secrets.EXPORTOPTIONS_BASE64 }}" | base64 -d > ExportOptions.plist
+
+      - name: Import Provisioning Profile
+        run: | 
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo -n ${{ secrets.PROVISIONING_PROFILE_BASE64 }} | base64 -d > ~/Library/MobileDevice/Provisioning\ Profiles/distribution.mobileprovision
+
+      - name: Import Code-Signing Certificates
+        uses: Apple-Actions/import-codesign-certs@v1
+        with:
+          p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
+          p12-password: ${{ secrets.CERTIFICATE_PASSWORD_BASE64 }}
+
+      - name: Create ipa file
+        run: flutter build ipa --export-options-plist=ExportOptions.plist --build-number ${GITHUB_RUN_NUMBER}
+
+      - name: Upload to AppStoreConnect
+#        run: xcrun altool --upload-app -f "./build/ios/ipa/flutter_ios_destribution.ipa" -t ios --apiKey "${{ secrets.APPLE_ID }}" --apiIssuer "${{ secrets.APPLE_APP_PASS }}" --verbose
+        run: xcrun altool --upload-app -t ios -f "./build/ios/ipa/flutter_ios_destribution.ipa" -u "${{ secrets.APPLE_ID }}" -p "${{ secrets.APPLE_APP_PASSWORD }}"
+
