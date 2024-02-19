@@ -47,7 +47,8 @@ Apple Developerの　Apple ID
 
 
 ### ・　PROVISIONING_PROFILE_BASE64
-https://developer.apple.com/ に移動　　→  Certificates, IDs, & Profiles　→  Profiles　→ より　以下を選択し　.mobileprovisio ファイルをダウンロード　→ エンコード
+https://developer.apple.com/ に移動　　→  Certificates, IDs, & Profiles　→ 
+Profiles　→ より　以下を選択し　.mobileprovisio ファイルをダウンロード　→ エンコード
 
 <img width="597" alt="image" src="https://github.com/rensawamo/flutter-IOS-destribution/assets/106803080/018c37c4-edae-4be4-8292-53b3fa2103a9">
 
