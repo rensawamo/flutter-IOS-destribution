@@ -2,9 +2,10 @@
 name: firebase_ios_destribution
 
 on:
-  push:
-    branches:
-      - 'main'
+  pull_request:
+    branches: [ main ]
+    types: [ closed ]
+
 jobs:
   build_iOS:
     name: firebase_ios_destribution
