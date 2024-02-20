@@ -54,13 +54,13 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: release-ipa
-          path: ./build/ios/ipa/flutter_ios_destribution.ipa
+          path: build/ios/ipa/*.ipa
 
-#      - name: Clean up keychain and provisioning profile
-#        if: ${{ always() }}
-#        run: |
-#          security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
-#          rm ~/Library/MobileDevice/Provisioning\ Profiles/build_pp.mobileprovision
+      - name: Clean up keychain and provisioning profile
+        if: ${{ always() }}
+        run: |
+          security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
+          rm ~/Library/MobileDevice/Provisioning\ Profiles/distribution.mobileprovision
           
 
 #  contanier error対策　で firebase destributionにデプロイする時は切り替える
@@ -74,12 +74,13 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: release-ipa
-
+      - name: Print working directory
+        run: pwd
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{secrets.IOS_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
-          file: ./build/ios/ipa/flutter_ios_destribution.ipa
+          file: flutter_ios_destribution.ipa
 
