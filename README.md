@@ -26,8 +26,42 @@ $ base64 -i input.xxx  -o output.pem
 ```
 
 
+##  必要な環境変数
+- APPLE_APP_PASSWORD :  　アプリ用パスワード
 
-## 環境変数と準備
+- APPLE_ID : 　 Apple Developerの　Apple ID
+
+
+- CERTIFICATES_P12_BASE64 : 　 Certificates と p12 のエンコード
+
+
+- CERTIFICATE_PASSWORD :　 パスワード
+
+
+- PROVISIONING_PROFILE_BASE64 :　  Provisioning profile　のエンコード
+
+  
+
+- EXPORTOPTIONS_BASE64 :  　 ExportOptions.plistのエンコード
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## APPLE_APP_PASSWORD  
 https://appleid.apple.com/ に移動　→ サインイン　→ 下記よりアプリ用パスワードを作成
