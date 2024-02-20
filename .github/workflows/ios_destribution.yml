@@ -74,4 +74,4 @@ jobs:
           appId: ${{secrets.IOS_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: ios-developers
-          file: ios/ipa/flutter_ios_destribution.ipa
+          file: flutter_ios_destribution.ipa
