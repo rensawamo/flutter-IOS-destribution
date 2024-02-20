@@ -46,15 +46,22 @@ jobs:
       - name: Create ipa file
         run: flutter build ipa --export-options-plist=ExportOptions.plist --build-number ${GITHUB_RUN_NUMBER}
 
+      - name: Upload to AppStoreConnect
+#        run: xcrun altool --upload-app -f "./build/ios/ipa/flutter_ios_destribution.ipa" -t ios --apiKey "${{ secrets.APPLE_ID }}" --apiIssuer "${{ secrets.APPLE_APP_PASS }}" --verbose
+        run: xcrun altool --upload-app -t ios -f "./build/ios/ipa/flutter_ios_destribution.ipa" -u "${{ secrets.APPLE_ID }}" -p "${{ secrets.APPLE_APP_PASSWORD }}"
+
       - name: collect ipa artifacts
         uses: actions/upload-artifact@v2
         with:
           name: release-ipa
-          path: build/ios/ipa/*.ipa
+          path: ./build/ios/ipa/*.ipa
 
-      - name: Upload to AppStoreConnect
-#        run: xcrun altool --upload-app -f "./build/ios/ipa/flutter_ios_destribution.ipa" -t ios --apiKey "${{ secrets.APPLE_ID }}" --apiIssuer "${{ secrets.APPLE_APP_PASS }}" --verbose
-        run: xcrun altool --upload-app -t ios -f "./build/ios/ipa/flutter_ios_destribution.ipa" -u "${{ secrets.APPLE_ID }}" -p "${{ secrets.APPLE_APP_PASSWORD }}"
+      - name: Clean up keychain and provisioning profile
+        if: ${{ always() }}
+        run: |
+          security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
+          rm ~/Library/MobileDevice/Provisioning\ Profiles/build_pp.mobileprovision
+          
 
 #  contanier error対策　で firebase destributionにデプロイする時は切り替える
   release:
@@ -73,5 +80,6 @@ jobs:
         with:
           appId: ${{secrets.IOS_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          groups: ios-developers
-          file: build/ios/ipa/flutter_ios_destribution.ipa
+          groups: testers
+          file: ./build/ios/ipa/flutter_ios_destribution.ipa
+
