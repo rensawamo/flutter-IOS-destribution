@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: release-ipa
-          path: ./build/ios/ipa/*.ipa
+          path: ./build/ios/ipa/flutter_ios_destribution.ipa
 
 #      - name: Clean up keychain and provisioning profile
 #        if: ${{ always() }}
