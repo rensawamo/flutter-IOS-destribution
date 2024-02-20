@@ -20,36 +20,40 @@ $ base64 -i input.xxx  -o output.pem
 
 ## 環境変数と準備
 
-### APPLE_APP_PASSWORD  
+## APPLE_APP_PASSWORD  
 https://appleid.apple.com/ に移動　→ サインイン　→ 下記よりアプリ用パスワードを作成
 
   ![image](https://github.com/rensawamo/flutter-IOS-destribution/assets/106803080/238b6e41-1c27-49cb-ab5a-5ba53e069f2d)
 
 
 
-### APPLE_ID 
+## APPLE_ID 
 Apple Developerの　Apple ID
 
 
-### CERTIFICATES_P12_BASE64
+## CERTIFICATES_P12_BASE64
 キーチェーンより証明書の要求を作成　→   https://developer.apple.com/ に移動　　→  Certificates, IDs, & Profiles　→  Certificates　→ より　以下を選択し　.cerファイルをダウンロード　　
 
 <img width="557" alt="image" src="https://github.com/rensawamo/flutter-IOS-destribution/assets/106803080/e299fffe-f2dc-4024-9304-161c769d2afa">
+<img width="190" alt="image" src="https://github.com/rensawamo/flutter-IOS-destribution/assets/106803080/e5187f07-e9b1-4125-8ca1-1cf3c6bbd0f4">
 
-→  ダブルクリック　　→  キーチェーンの鍵に登録されている　→ 右クリックで　書き出す　を選択　→ エンコード
+
+→  ダブルクリック　　→  キーチェーンの鍵に登録されている　→ 右クリックで　書き出す　を選択　
 　
-<br>
 
 ![image](https://github.com/rensawamo/flutter-IOS-destribution/assets/106803080/33768b2f-cd35-4249-a2e4-1a2b6764c317)
 
+→  .p12 ファイルが作成される　→　エンコード
+
+<img width="250" alt="image" src="https://github.com/rensawamo/flutter-IOS-destribution/assets/106803080/3eb3a920-f862-4ad9-befe-a59f3e27e846">
 
 
-### CERTIFICATE_PASSWORD
+## CERTIFICATE_PASSWORD
 上記の書き出しの時に　パスワードを設定するため、メモしておく
 
 
 
-### PROVISIONING_PROFILE_BASE64
+## PROVISIONING_PROFILE_BASE64
 https://developer.apple.com/ に移動　　→  Certificates, IDs, & Profiles　→ 
 Profiles　→ より　以下を選択し　.mobileprovisio ファイルをダウンロード　→ 　エンコード
 
@@ -59,7 +63,7 @@ Profiles　→ より　以下を選択し　.mobileprovisio ファイルをダ�
 
 
 
-### EXPORTOPTIONS_BASE64
+## EXPORTOPTIONS_BASE64
 xcodeに移動　→ 以下を設定
 
 ![image](https://github.com/rensawamo/flutter-IOS-destribution/assets/106803080/de4b0efa-7426-46b5-afac-8b46be3a6dc5)
