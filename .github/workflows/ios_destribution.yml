@@ -59,7 +59,7 @@ jobs:
 #  contanier error対策　で firebase destributionにデプロイする時は切り替える
   release:
     name: Release ipa to Firebase
-    needs: [ build ]
+    needs: [ build_iOS ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
