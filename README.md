@@ -1,5 +1,14 @@
 # iOS destribution(2024/2)
 
+##  fvmを使う場合
+``` sh
+fvm list
+fvm use (上記ver)
+or
+fvm use stable
+```
+
+
 ## gitigonreに先に以下を追加しておく
 
 ```sh
