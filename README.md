@@ -1,4 +1,4 @@
-# flutter_ios_destribution
+# iOS destribution(2024/2)
 
 ## gitigonreに先に以下を追加しておく
 
