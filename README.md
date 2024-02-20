@@ -146,6 +146,16 @@ xcodeに移動　→ 以下を設定
 
 
 
+## firebase 導入
 
+firebase_core がないと xcodeでエラーが出る場合は
+ios/Flutter/Release.configを以下のように修正
+
+
+```sh
+#include? 'Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig'
+#include 'Generated.xcconfig'
+#include 'Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig'
+```
 
 
