@@ -45,21 +45,10 @@ $ base64 -i input.xxx  -o output.pem
 - EXPORTOPTIONS_BASE64 :  　 ExportOptions.plistのエンコード
 
 
+- IOS_APP_ID : firebase のiOS アプリ名
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+- CREDENTIAL_FILE_CONTENT : GCP トークン
 
 
 
@@ -147,15 +136,46 @@ xcodeに移動　→ 以下を設定
 
 
 ## firebase 導入
+上記で作成した Bundel Identifer と同じ バンドル IDで　firebaseのiosプロジェクトを作成。
+
+以下に　GoogleService-Info.plist ファイルを追加する。
+<img width="606" alt="image" src="https://github.com/rensawamo/flutter-IOS-destribution/assets/106803080/0bc1c3b1-2aea-456a-8b42-5b618a7336c1">
+
+
+上記の後、firebaseの画面に移動 → アプリの追加 → flutter で
+firebase login コマンドなどを順番に実行し、プロジェクトに firebase_option.dartが追加されていることを確認する
+
+![image](https://github.com/rensawamo/firebase_destribution/assets/106803080/3ed7ca87-d419-4bb5-9bc8-2b831be7b779)
+
+
+### firebase core の導入
+[pubget](https://pub.dev/)
+から firebase_core のバージョンを指定して
+
+```sh
+flutter pub get
+```
 
 firebase_core がないと xcodeでエラーが出る場合は
 ios/Flutter/Release.configを以下のように修正
-
 
 ```sh
 #include? 'Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig'
 #include 'Generated.xcconfig'
 #include 'Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig'
 ```
+
+
+###  GCP トークン の発行
+
+https://github.com/wzieba/Firebase-Distribution-Github-Action/wiki/FIREBASE_TOKEN-migration#guide-2---the-same-but-with-screenshots
+
+以下のコマンドは、現在では非推奨。
+```sh
+firebase login:ci
+```
+
+
+
 
 
